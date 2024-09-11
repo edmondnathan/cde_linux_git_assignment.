@@ -52,4 +52,42 @@ The script defines the following environment variables:
 
 ## Known Issues
 Ensure that the provided URL is correct and accessible. The script will exit if the file cannot be downloaded.
-In the transformation step, ensure that the column names in the raw dataset match those referenced in the script.
+In the transformation step, please make sure that the column names in the raw dataset match those referenced in the script.
+
+
+# File Organization Script for CSV and JSON Files
+This repository section contains a simple bash script to organize and move all CSV and JSON files into a dedicated directory.
+
+## Project Overview
+This script automates the task of collecting all .csv and .json files from the current directory and moving them into a new directory named json_and_csv for better file management and organization.
+
+## Script Overview
+The script follows two main steps:
+
+## Create Directory:
+It creates a folder named json_and_csv to store the files, ensuring the directory exists or is created if missing.
+Move Files:
+It transfers all .csv and .json files from the current directory into the json_and_csv/ folder.
+Verify Transfer:
+After moving the files, it checks if the transfer was successful by verifying if the json_and_csv folder contains files.
+## Usage
+To run this script, simply execute the following command in your terminal:
+
+## bash
+./file_organizer.sh
+
+Creates the folder json_and_csv (if it doesn’t already exist).
+Moves all .csv and .json files from the current directory to json_and_csv/.
+Prints a message indicating whether the file transfer was successful or not.
+
+## Prerequisites
+Ensure you have files with .csv and .json extensions in the current directory where the script is executed.
+Features
+**Automation:** No manual sorting is required; all files are automatically moved to the designated folder.
+**Error Checking:** After moving the files, the script checks to ensure they are correctly placed in the folder and informs you if the transfer fails.
+
+
+## Known Issues
+The script will only move files with the .csv or .json extension.
+Ensure you are running the script from the directory that contains the target files.
+

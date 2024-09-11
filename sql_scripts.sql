@@ -28,26 +28,29 @@ WHERE
 /* This query displays only the company names starting with 'C' or 'W' and where the primary contact contains 'ana' or 'Ana', but does not contain 'eana'*/
 
 SELECT 
-  company_name 
+  name 
 FROM 
-  companies 
+  accounts 
 WHERE 
   (
-    company_name LIKE 'C%' 
-    OR company_name LIKE 'W%'
+    name LIKE 'C%' 
+    OR name LIKE 'W%'
   ) 
-  AND primary_contact LIKE '%ana%' 
-  AND primary_contact NOT LIKE '%eana%';
+  AND (
+    primary_poc ILIKE '%ana%' 
+    AND primary_poc NOT ILIKE '%eana%'
+  );
+
   
 /* This query shows the region, sales rep, and account name, sorted by account name */
 
 SELECT 
-  r.region_name, 
-  s.sales_rep_name, 
-  a.account_name 
+  r.name AS region_name, 
+  sr.name AS sales_rep_name, 
+  a.name AS account_name 
 FROM 
-  regions r 
-  JOIN sales_reps s ON r.region_id = s.region_id 
-  JOIN accounts a ON s.sales_rep_id = a.sales_rep_id 
+  accounts a 
+  JOIN sales_reps sr ON a.sales_rep_id = sr.id 
+  JOIN region r ON sr.region_id = r.id 
 ORDER BY 
-  a.account_name;
+  a.name ASC;
